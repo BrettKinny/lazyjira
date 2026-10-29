@@ -40,6 +40,7 @@ const (
 	ActPriority       Action = "editPriority"
 	ActAssignee       Action = "editAssignee"
 	ActJQLSearch      Action = "jqlSearch"
+	ActGotoIssue      Action = "gotoIssue"
 	ActCloseJQLTab    Action = "closeJQLTab"
 	ActCreateBranch   Action = "createBranch"
 	ActCreateIssue    Action = "createIssue"
@@ -94,6 +95,7 @@ func DefaultKeymap() Keymap {
 		ActPriority:       {"p"},
 		ActAssignee:       {"a"},
 		ActJQLSearch:      {"s"},
+		ActGotoIssue:      {"ctrl+g"},
 		ActCloseJQLTab:    {"x"},
 		ActCreateBranch:   {"b"},
 		ActDuplicateIssue: {"ctrl+n"},
@@ -138,6 +140,7 @@ func KeymapFromConfig(kcfg config.KeybindingConfig) Keymap {
 	set(ActFocusInfo, kcfg.Universal.FocusInfo)
 	set(ActFocusProj, kcfg.Universal.FocusProj)
 	set(ActJQLSearch, kcfg.Universal.JQLSearch)
+	set(ActGotoIssue, kcfg.Universal.GotoIssue)
 	// Issues (Select, Open, FocusRight are shared with Projects panel)
 	set(ActSelect, kcfg.Issues.Select)
 	set(ActOpen, kcfg.Issues.Open)

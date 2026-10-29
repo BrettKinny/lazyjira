@@ -369,6 +369,11 @@ func (a *App) handleTabAction(action Action) (tea.Model, tea.Cmd, bool) {
 			cmds = append(cmds, fetchJQLAutocompleteData(a.client))
 		}
 		return a, tea.Batch(cmds...), true
+
+	case ActGotoIssue:
+		a.inputModal.Show("Go to issue (key, number or URL)", "")
+		a.editContext = editCtx{kind: editGotoIssue}
+		return a, nil, true
 	}
 	return nil, nil, false
 }

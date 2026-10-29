@@ -62,6 +62,7 @@ const (
 	editBranch
 	editCreateField
 	editCreateDesc
+	editGotoIssue
 )
 
 type editCtx struct {
@@ -209,6 +210,8 @@ type App struct {
 	gitRepoPath    string
 	gitBranch      string
 	gitDetectedKey string
+
+	startIssue string
 
 	customCmds []config.ResolvedCustomCommand
 
@@ -436,6 +439,11 @@ func (a *App) Init() tea.Cmd {
 	if cmd := a.fetchActiveTab(); cmd != nil {
 		cmds = append(cmds, cmd)
 	}
+	// Bare numbers wait for handleProjectsLoaded to pick the project.
+	if a.startIssue != "" && resolveGotoKey(a.startIssue, a.projectKey) != "" {
+		cmds = append(cmds, a.gotoIssue(a.startIssue))
+		a.startIssue = ""
+	}
 	return tea.Batch(cmds...)
 }
 
@@ -475,6 +483,8 @@ func (a *App) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 		return a.handleIssuesLoaded(msg)
 	case issueDetailLoadedMsg:
 		return a.handleIssueDetailLoaded(msg)
+	case gotoIssueLoadedMsg:
+		return a.handleGotoIssueLoaded(msg)
 	case issuePrefetchedMsg:
 		return a.handleIssuePrefetched(msg)
 	case batchPrefetchedMsg:

@@ -128,6 +128,9 @@ func run() error {
 	tui.Version = version
 	app := tui.NewAppWithAuth(cfg, client, authMethod)
 	defer app.Shutdown()
+	if key := flag.Arg(0); key != "" {
+		app.SetStartIssue(key)
+	}
 
 	p := tea.NewProgram(app, tea.WithAltScreen(), tea.WithMouseCellMotion())
 	_, err = p.Run()

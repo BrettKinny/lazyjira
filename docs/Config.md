@@ -87,6 +87,7 @@ keybinding:
         focusInfo: "3"
         focusProjects: "4"
         jqlSearch: s
+        gotoIssue: ctrl+g
     navigation:
         down: j
         up: k

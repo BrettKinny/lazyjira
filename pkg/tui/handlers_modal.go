@@ -173,6 +173,8 @@ func (a *App) handleInputConfirmed(msg components.InputConfirmedMsg) (tea.Model,
 				return a, gitCreateBranch(a.gitRepoPath, msg.Text)
 			}
 		}
+	case editGotoIssue:
+		return a, a.gotoIssue(msg.Text)
 	}
 	return a, nil
 }

@@ -370,15 +370,20 @@ func (a *App) handleProjectsLoaded(msg projectsLoadedMsg) (tea.Model, tea.Cmd) {
 		}
 	}
 	a.projectList.SetProjects(projects)
+	var cmds []tea.Cmd
 	if a.projectKey == "" && len(projects) > 0 {
 		a.projectKey = projects[0].Key
 		a.projectID = projects[0].ID
 		a.statusPanel.SetProject(a.projectKey)
 		a.projectList.SetActiveKey(a.projectKey)
 		a.resolveBoardID()
-		return a, a.fetchActiveTab()
+		cmds = append(cmds, a.fetchActiveTab())
 	}
-	return a, nil
+	if a.startIssue != "" {
+		cmds = append(cmds, a.gotoIssue(a.startIssue))
+		a.startIssue = ""
+	}
+	return a, tea.Batch(cmds...)
 }
 
 // prefetchRelated batches a single JQL search for all linked issues and subtasks not yet in cache

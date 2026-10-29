@@ -108,6 +108,17 @@ func fetchIssueDetail(client jira.ClientInterface, key string) tea.Cmd {
 	})
 }
 
+type gotoIssueLoadedMsg struct{ issue *jira.Issue }
+
+func fetchGotoIssue(client jira.ClientInterface, key string) tea.Cmd {
+	return fetchFullIssue(client, key, func(issue *jira.Issue) tea.Msg {
+		if issue == nil {
+			return errorMsg{err: fmt.Errorf("issue %s not found", key)}
+		}
+		return gotoIssueLoadedMsg{issue: issue}
+	})
+}
+
 // fetchPreviewDetail is like fetchIssueDetail but returns a previewDetailLoadedMsg
 // carrying the caller's epoch, so that responses from a superseded preview
 // intent can be dropped. See App.previewEpoch.

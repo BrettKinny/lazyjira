@@ -152,6 +152,7 @@ type UniversalKeys struct {
 	FocusInfo   string `yaml:"focusInfo"`
 	FocusProj   string `yaml:"focusProjects"`
 	JQLSearch   string `yaml:"jqlSearch"`
+	GotoIssue   string `yaml:"gotoIssue"`
 }
 
 type IssueKeys struct {

@@ -174,6 +174,8 @@ See the [Themes docs](docs/Config.md#themes) for supported values, palette overr
 
 ```
 lazyjira                 # start
+lazyjira PROJ-123        # start with an issue open
+lazyjira 123             # same, in the current project
 lazyjira auth            # re-authenticate
 lazyjira logout          # clear credentials
 lazyjira --dry-run       # read-only mode (no writes to Jira)

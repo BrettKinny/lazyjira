@@ -51,6 +51,7 @@ func (a *App) ContextBindings() []Binding {
 		{km.Keys(ActSearch), "search / filter current list"},
 		{km.Keys(ActRefresh), "refresh data from Jira"},
 		a.bind(ActJQLSearch, "JQL search"),
+		a.bind(ActGotoIssue, "go to issue by key"),
 		{km.Keys(ActHelp), "show all keybindings"},
 	}
 
