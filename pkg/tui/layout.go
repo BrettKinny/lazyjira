@@ -125,11 +125,15 @@ func (a *App) layoutPanels() {
 	var issuesH, infoH, projectsH int
 	minH := 3
 	collapsedH := max(a.cfg.GUI.CollapsedPanelHeight, minH)
+	infoCollapsedH := collapsedH
+	if a.cfg.GUI.InfoPanelHeight > 0 {
+		infoCollapsedH = max(a.cfg.GUI.InfoPanelHeight, minH)
+	}
 
 	switch a.leftFocus {
 	case focusProjects:
 		// Projects focused: info and issues compact.
-		infoH = collapsedH
+		infoH = infoCollapsedH
 		issuesNat := max(min(a.issuesList.ContentHeight(), 12), minH)
 		issuesH = max(min(issuesNat, remaining/3), minH)
 		projectsH = remaining - issuesH - infoH
@@ -141,7 +145,7 @@ func (a *App) layoutPanels() {
 		infoH = remaining - issuesH - projectsH
 	default:
 		// Issues focused (or status): info and projects compact, issues gets space.
-		infoH = collapsedH
+		infoH = infoCollapsedH
 		projectsH = collapsedH
 		issuesH = remaining - infoH - projectsH
 	}

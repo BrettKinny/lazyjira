@@ -242,6 +242,7 @@ type GUIConfig struct {
 	Language             string            `yaml:"language"` // TODO not yet wired up
 	SidePanelWidth       int               `yaml:"sidePanelWidth"`
 	CollapsedPanelHeight int               `yaml:"collapsedPanelHeight"`
+	InfoPanelHeight      int               `yaml:"infoPanelHeight"`
 	ShowIcons            bool              `yaml:"showIcons"`  // TODO not yet wired up
 	DateFormat           string            `yaml:"dateFormat"` // TODO not yet wired up
 	Mouse                bool              `yaml:"mouse"`      // TODO not yet wired up

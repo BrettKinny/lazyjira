@@ -47,6 +47,7 @@ gui:
     language: en
     sidePanelWidth: 40
     collapsedPanelHeight: 5
+    infoPanelHeight: 0
     showIcons: true
     dateFormat: "2006-01-02"
     mouse: true
@@ -190,6 +191,8 @@ gui:
 `sidePanelWidth` controls the left panel width in columns. It automatically shrinks on narrow terminals.
 
 `collapsedPanelHeight` sets the height of non-focused left panels in lines (default 5, minimum 3).
+
+`infoPanelHeight` sets the Info panel height while it isn't focused, so issue fields stay visible as you move through the list. `0` (default) uses `collapsedPanelHeight`.
 
 `theme` selects the color palette. Supported values: `default` (ANSI 16, original look), `auto`, [Catppuccin](https://github.com/catppuccin/catppuccin) presets (`catppuccin-latte`, `catppuccin-frappe`, `catppuccin-macchiato`, `catppuccin-mocha`). Omitting the `theme` key or setting it to `""` keeps the legacy `default` ANSI 16 palette for backward compatibility. Use `theme: auto` to opt into runtime detection: lazyjira inspects your terminal background and picks `catppuccin-mocha` (dark) or `catppuccin-latte` (light). An unknown theme name is an error. Hex-based themes require a terminal with truecolor support.
 
