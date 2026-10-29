@@ -40,7 +40,7 @@ Detail scroll keys (`J`/`K`/`ctrl+f`/`ctrl+b`) can be remapped via `keybinding.d
 | `y` | Copy issue URL |
 | `b` | Create branch from issue |
 | `s` | JQL search |
-| `ctrl+g` | Go to issue by key (`PROJ-123`, bare number for the current project, or a `/browse/` URL) |
+| `f` | Go to issue by key (`PROJ-123`, bare number for the current project, or a `/browse/` URL) |
 | `x` | Close JQL tab |
 
 ## Help popup

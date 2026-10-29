@@ -95,7 +95,7 @@ func DefaultKeymap() Keymap {
 		ActPriority:       {"p"},
 		ActAssignee:       {"a"},
 		ActJQLSearch:      {"s"},
-		ActGotoIssue:      {"ctrl+g"},
+		ActGotoIssue:      {"f"},
 		ActCloseJQLTab:    {"x"},
 		ActCreateBranch:   {"b"},
 		ActDuplicateIssue: {"ctrl+n"},
